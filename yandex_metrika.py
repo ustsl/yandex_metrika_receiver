@@ -54,8 +54,9 @@ class YandexMetrikaSettings(ABC):
                 'filters': params.get('filters')}
             return self._params
 
-    def __str__ (self):
+    def __str__(self):
         return str(self._settings)
+
 
 class YandexMetrikaReceiver(YandexMetrikaSettings):
 
@@ -63,7 +64,6 @@ class YandexMetrikaReceiver(YandexMetrikaSettings):
 
     def _request_method(self, offset, n_rows):
 
-        # Функция запроса
         self._params['offset'] = offset
         self._params['limit'] = n_rows
         r = requests.get(YandexMetrikaReceiver._API_URL,
@@ -100,8 +100,7 @@ class YandexMetrikaReceiver(YandexMetrikaSettings):
             timer += 1
 
             if timer / 10 == int(timer / 10):
-                print('Finished step - {}, next row - {}'
-                      .format(timer, offset))
+                print(f'Finished step - {timer}, next row - {offset}')
 
             time.sleep(time_pause)
 
