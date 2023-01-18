@@ -115,3 +115,17 @@ class YandexMetrikaReceiver(YandexMetrikaSettings):
                 break
 
         return self.data
+    
+    @staticmethod
+    def dict_to_list(data):
+        # TRANSFORM DICTIONARY TO LIST
+        def dimension_func(dictdimensions):
+            listdimensions = []
+            for dimension in dictdimensions:
+                listdimensions += [dimension['name']]
+            return listdimensions
+        
+        list_data = []
+        for element in data:
+            list_data += [dimension_func(element['dimensions']) + element['metrics']]
+        return list_data
