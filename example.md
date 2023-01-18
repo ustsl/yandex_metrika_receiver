@@ -8,5 +8,4 @@ counter = '********'
 
 ymr = YandexMetrikaReceiver()
 ymr.settings = {'counter': counter, 'token': token, 'params': params}
-ymr.settings
 ymr.receive()

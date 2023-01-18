@@ -38,10 +38,10 @@ class YandexMetrikaSettings(ABC):
 
         if not dates or len(dates) != 2:
             print('Need dates list (start, end)')
-            return 
+            return
         if not preset:
             print('Need preset list (dimension, metrics)')
-            return 
+            return
         else:
             self._checkup = True
             self._params = {
@@ -74,9 +74,9 @@ class YandexMetrikaReceiver(YandexMetrikaSettings):
         print(r)
 
     def receive(self, n_rows=100, time_pause=1):
-           
-        self.settings # init settings
-        
+
+        self.settings  # init settings
+
         offset = 1
         timer = 1
         cycle = True
