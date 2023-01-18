@@ -82,7 +82,6 @@ class YandexMetrikaReceiver(YandexMetrikaSettings):
 
         while cycle == True:
 
-            # Получаем данные в цикле
             self._request_method(offset, n_rows)
             dataset = self.json
 
