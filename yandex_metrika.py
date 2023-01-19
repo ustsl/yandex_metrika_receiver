@@ -64,19 +64,20 @@ class YandexMetrikaReceiver(YandexMetrikaSettings):
 
     _API_URL = 'https://api-metrika.yandex.ru/stat/v1/data'
 
+    def __init__(self):
+        super().__init__()
+
     def _request_method(self, offset, n_rows):
 
         self._params['offset'] = offset
         self._params['limit'] = n_rows
-        r = requests.get(YandexMetrikaReceiver._API_URL,
+        r = requests.get(self._API_URL,
                          params=self._params, headers=self._headers)
         self.json = r.json()
         print(r)
 
     def receive(self, n_rows=100, time_pause=1):
-
-        self.settings  # init settings
-
+        self.settings
         offset = 1
         timer = 1
         cycle = True
